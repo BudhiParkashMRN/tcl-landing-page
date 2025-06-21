@@ -425,12 +425,12 @@ const App = () => {
           <div className="bg-white p-8 rounded-xl shadow-2xl text-center max-w-md w-full animate-scale-in">
             <CheckCircle className="w-20 h-20 text-green-500 mx-auto mb-6" />
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              🎉 Thank You for Joining the TCL Cricket Celebration!
+              🎉 Thank You for Joining the TCL Celebration!
             </h2>
             <p className="text-lg text-gray-700 mb-6">
-              You're now part of the exclusive TCL Fan Club. Get ready for exciting updates and opportunities!
+              You're now part of the exclusive TCL Premium Member. Get ready for exciting updates and opportunities!
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
+            {/* <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button
                 onClick={() => alert("Simulating wallpaper download...")} // Using alert for demo purposes
                 className="bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-blue-700 transition duration-300 flex items-center justify-center"
@@ -447,7 +447,7 @@ const App = () => {
               >
                 Go to Social
               </button>
-            </div>
+            </div> */}
             <button
               onClick={() => setShowThankYou(false)}
               className="mt-6 text-gray-600 hover:text-gray-900 transition duration-300"
