@@ -245,7 +245,7 @@ const App = () => {
         <iframe
           src="https://tclqyiz.pages.dev/"
           width="100%"
-          height="550"
+          height="680"
           className="w-full max-w-[600px]"
           style={{ border: 'none', overflow: 'hidden' }}
           scrolling="no"
@@ -253,16 +253,26 @@ const App = () => {
       </div>
       
       <div className="w-full md:w-1/2 text-lg leading-relaxed text-gray-700 text-center md:text-left mt-8 md:mt-0">
-        <p className="mb-4">
-          TCL, an official Olympic Games sponsor, brings you a chance to win exciting prizes by participating in our exclusive Olympics Cricket Quiz!
-        </p>
-        <p className="mb-4">
-          Answer a few fun questions and stand a chance to take home a TCL Washing Machine and other exciting rewards.
-        </p>
-        <p>
-          Dive into the spirit of the Olympics with TCL — where innovation meets sportsmanship.
-        </p>
-      </div>
+  <p className="mb-4">
+    TCL, an official Olympic Games sponsor, invites you to be part of the action like never before. Celebrate the historic return of cricket to the Olympics by participating in our exclusive TCL Olympics Cricket Quiz.
+  </p>
+  <p className="mb-4">
+    Its more than just a quiz — its your gateway to exciting rewards! Test your sports knowledge, show your Olympic spirit, and win big.
+  </p>
+  <p className="mb-4">
+    Lucky winners stand a chance to take home amazing prizes, including a brand-new TCL Washing Machine — designed with innovation and efficiency in mind.
+  </p>
+  <p className="mb-4">
+    Whether you're a die-hard cricket fan or a passionate supporter of Team India, this is your moment to shine with TCL.
+  </p>
+  <p className="mb-4">
+    Do not miss out! Join thousands of fans across the country in celebrating the Olympics with TCLs technology and thrill-packed contests.
+  </p>
+  <p>
+    Participate now, score big, and experience the power of sport and innovation — only with TCL.
+  </p>
+</div>
+
     </div>
   </div>
 </section>
