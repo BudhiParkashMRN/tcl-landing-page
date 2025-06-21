@@ -214,7 +214,7 @@ const App = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-blue-600/70 to-purple-600/70 z-0"></div>
         <div className="relative z-10 p-6 sm:p-8 md:p-12 lg:p-16 text-white max-w-4xl mx-auto">
           <h1 className="text-2xl sm:text-xl md:text-5xl font-extrabold leading-tight drop-shadow-lg mb-4 animate-fade-in-up">
-            Join the TCL Fan Club for the Olympics Cricket Extravaganza!
+           Become TCL Premium Member for the Olympics Extravaganza!
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl font-light mb-8 drop-shadow-md animate-fade-in-up delay-200">
             Experience the thrill, get exclusive updates, and win exciting goodies!
@@ -270,9 +270,9 @@ const App = () => {
             {/* Highlight 1 */}
             <div className=" bg-blue-800 border p-8 rounded-xl shadow-lg flex flex-col items-center hover:bg-blue-900 transition duration-300">
               <Trophy className="w-16 h-16 mb-4 text-yellow-400" />
-              <h3 className="text-2xl font-semibold mb-3">Win Exciting Goodies</h3>
+              <h3 className="text-2xl font-semibold mb-3">Win Big</h3>
               <p className="text-lg text-blue-200">
-                Participate in contests and win exclusive TCL products and Olympic merchandise!
+              Participate in contests and win a TCL Washing Machine 
               </p>
             </div>
             {/* Highlight 2 */}
@@ -303,7 +303,7 @@ const App = () => {
       <section ref={formRef} className="py-16 bg-gray-100">
         <div className="container mx-auto px-6 max-w-lg">
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-8">
-            Join the Fan Club!
+           Join TCL Premium Membership!
           </h2>
           <div className="bg-white p-8 rounded-xl shadow-xl border border-gray-200">
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -466,13 +466,13 @@ const App = () => {
           </div>
           <p className="text-gray-400 mb-6">&copy; {new Date().getFullYear()} TCL. All rights reserved. Official Sponsor of the Olympic Games.</p>
           <div className="flex justify-center space-x-6">
-            <a href="#" className="text-gray-400 hover:text-white transform hover:scale-125 transition duration-300" aria-label="Twitter">
+            <a href="https://twitter.com/tcl_india" className="text-gray-400 hover:text-white transform hover:scale-125 transition duration-300" aria-label="Twitter">
               <Twitter className="w-7 h-7" />
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transform hover:scale-125 transition duration-300" aria-label="Facebook">
+            <a href="https://www.facebook.com/TheCreativeLifeIndia/" className="text-gray-400 hover:text-white transform hover:scale-125 transition duration-300" aria-label="Facebook">
               <Facebook className="w-7 h-7" />
             </a>
-            <a href="#" className="text-gray-400 hover:text-white transform hover:scale-125 transition duration-300" aria-label="Instagram">
+            <a href="https://www.instagram.com/tcl_india/" className="text-gray-400 hover:text-white transform hover:scale-125 transition duration-300" aria-label="Instagram">
               <Instagram className="w-7 h-7" />
             </a>
           </div>
