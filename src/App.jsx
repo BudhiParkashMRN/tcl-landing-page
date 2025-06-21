@@ -234,9 +234,46 @@ const App = () => {
         </div>
       </section>
 
+      <section className="py-16 bg-white rounded-t-3xl mt-[-2rem] relative z-10 shadow-lg">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">
+      Play the TCL Olympics Quiz & Win a Washing Machine!
+    </h2>
+    <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+      
+      <div className="w-full md:w-1/2 flex justify-center">
+        <iframe
+          src="https://tclqyiz.pages.dev/"
+          width="100%"
+          height="550"
+          className="w-full max-w-[600px]"
+          style={{ border: 'none', overflow: 'hidden' }}
+          scrolling="no"
+        ></iframe>
+      </div>
+      
+      <div className="w-full md:w-1/2 text-lg leading-relaxed text-gray-700 text-center md:text-left mt-8 md:mt-0">
+        <p className="mb-4">
+          TCL, an official Olympic Games sponsor, brings you a chance to win exciting prizes by participating in our exclusive Olympics Cricket Quiz!
+        </p>
+        <p className="mb-4">
+          Answer a few fun questions and stand a chance to take home a TCL Washing Machine and other exciting rewards.
+        </p>
+        <p>
+          Dive into the spirit of the Olympics with TCL — where innovation meets sportsmanship.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      
+
       {/* About the Campaign Section */}
       <section className="py-16 bg-white rounded-t-3xl mt-[-2rem] relative z-10 shadow-lg">
         <div className="container mx-auto px-6 text-center">
+        
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">
             TCL: Powering the Olympic Cricket Dream
           </h2>
