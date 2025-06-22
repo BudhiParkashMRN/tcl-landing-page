@@ -248,7 +248,7 @@ const App = () => {
           height="680"
           className="w-full max-w-[600px]"
           style={{ border: 'none', overflow: 'hidden' }}
-          scrolling="no"
+    
         ></iframe>
       </div>
       
