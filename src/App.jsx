@@ -1,7 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
-// Changed import: Removed 'Cricket' as it's not directly available in Lucide.
-// Will use a custom SVG for the cricket icon.
 import { Trophy, Tv, Send, CheckCircle, Download, Twitter, Facebook, Instagram } from 'lucide-react';
+
+// Card component for displaying individual terms and conditions
+const TermCard = ({ title, description }) => (
+  <div className="bg-white p-6 rounded-xl shadow-md border border-gray-200 hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
+    <h3 className="text-xl font-semibold text-gray-900 mb-3">{title}</h3>
+    <p className="text-gray-700 text-base leading-relaxed">{description}</p>
+  </div>
+);
 
 // Main App component
 const App = () => {
@@ -32,7 +38,48 @@ const App = () => {
     "Uttarakhand", "West Bengal"
   ];
 
-  // Effect to handle scroll-based animations for highlights section
+  // Data for Terms & Conditions cards
+  const termsAndConditionsData = [
+    {
+      title: "Contest Duration",
+      description: "The contest runs from 23rd June to 6th July 2025. Entries submitted after 11:59 PM on 6th July 2025 will not be accepted."
+    },
+    {
+      title: "Participation Criteria",
+      description: "To be eligible, participants must answer all four trivia questions correctly and complete the lead form with accurate details. Incomplete or incorrect entries will be disqualified."
+    },
+    {
+      title: "Eligibility",
+      description: "The contest is open to Indian residents aged 18 and above. Employees of TCL and their immediate family members are not eligible to participate."
+    },
+    {
+      title: "Winner Selection",
+      description: "Three winners will be chosen through a fair selection process from all valid and eligible entries. Each winner will receive a TCL Washing Machine. The organizers' decision is final and binding."
+    },
+    {
+      title: "Winner Announcement",
+      description: "Winners will be contacted via the contact details provided in the lead form within a reasonable time after the contest concludes. If a winner is unreachable within 48 hours, a new winner may be selected."
+    },
+    {
+      title: "Prize Terms",
+      description: "Prizes are non-transferable, non-exchangeable, and cannot be redeemed for cash."
+    },
+    {
+      title: "General Terms",
+      description: "By entering, participants agree to the use of their details for promotional purposes by TCL. Participation implies acceptance of these terms and conditions."
+    },
+    {
+      title: "Data Usage",
+      description: "Participants’ personal details will be used for promotional purposes by TCL."
+    },
+    {
+      title: "Liability Disclaimer",
+      description: "TCL is not responsible for errors, technical issues, delays, or any loss or damage resulting from participation or prize acceptance."
+    }
+  ];
+
+
+  // Effect to handle scroll-based animations for highlights section (though no highlights section is directly present in provided code)
   useEffect(() => {
     const observerOptions = {
       root: null,
@@ -110,7 +157,6 @@ const App = () => {
   };
 
   // Helper function for input styling based on validation
-  // Modified to take the actual value of the field, not its string name.
   const getInputClass = (fieldName, fieldValue) => {
     const baseClasses = 'w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition duration-300 ease-in-out';
     if (errors[fieldName]) {
@@ -163,6 +209,7 @@ const App = () => {
             color: #9ca3af; /* gray-400 */
             transition: all 0.3s ease;
             pointer-events: none;
+            z-index: 1; /* Ensure label is above input when not focused/filled */
         }
 
         .input-group input:focus + .input-float-label,
@@ -176,7 +223,15 @@ const App = () => {
             background-color: #f3f4f6; /* bg-gray-100 */
             padding: 0 0.25rem;
             left: 0.75rem;
+            z-index: 2; /* Ensure label is above input after animation */
         }
+
+        /* Adjust input padding to prevent text overlap with floating label */
+        .input-group input, .input-group select {
+            padding-top: 1.25rem; /* Add more space for label to float above */
+            padding-bottom: 0.75rem;
+        }
+
 
         .input-group select {
             appearance: none; /* Remove default arrow */
@@ -201,154 +256,20 @@ const App = () => {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        .animate-scale-in {
+            animation: scaleIn 0.3s ease-out forwards;
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
         `}
       </style>
 
-      {/* Hero Section */}
-      {/* <section className="relative h-screen flex items-center justify-center text-center bg-cover bg-center rounded-b-3xl shadow-xl overflow-hidden"
-        style={{
-          backgroundImage: "url('https://t4.ftcdn.net/jpg/05/38/40/35/360_F_538403521_YuqQKnrBgAiabJXH7zsA8suaSHs93Dm0.jpg')", // Placeholder background image
-          backgroundBlendMode: 'overlay',
-          backgroundColor: 'rgba(0, 0, 0, 0.4)'
-        }}>
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 z-0"></div>
-        <div className="relative z-10 p-6 sm:p-8 md:p-12 lg:p-16 text-white max-w-4xl mx-auto">
-          <h1 className="text-2xl sm:text-xl md:text-5xl font-extrabold leading-tight drop-shadow-lg mb-4 animate-fade-in-up">
-           Become TCL Premium Member for the Olympics Extravaganza!
-          </h1>
-          <p className="text-lg sm:text-xl md:text-2xl font-light mb-8 drop-shadow-md animate-fade-in-up delay-200">
-            Experience the thrill, get exclusive updates, and win exciting goodies!
-          </p>
-          <button
-            onClick={scrollToForm}
-            className="bg-blue-800 text-white border font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out text-lg animate-bounce-in"
-          >
-            Join Now
-          </button>
-         
-          <div className="absolute bottom-10 right-10 hidden md:block">
-            <span className="text-6xl cricket-ball-animation" role="img" aria-label="Cricket Ball">
-              🏏
-            </span>
-          </div>
-        </div>
-      </section> */}
-
-      {/* <section className="py-16 bg-white rounded-t-3xl mt-[-2rem] relative z-10 shadow-lg">
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">
-      Play the TCL Olympics Quiz & Win a Washing Machine!
-    </h2>
-    <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-      
-      <div className="w-full md:w-1/2 flex justify-center">
-        <iframe
-          src="https://tclqyiz.pages.dev/"
-          width="100%"
-          height="680"
-          className="w-full max-w-[600px]"
-          style={{ border: 'none', overflow: 'hidden' }}
-    
-        ></iframe>
-      </div>
-      
-      <div className="w-full md:w-1/2 text-lg leading-relaxed text-gray-700 text-center md:text-left mt-8 md:mt-0">
-  <p className="mb-4">
-    TCL, an official Olympic Games sponsor, invites you to be part of the action like never before. Celebrate the historic return of cricket to the Olympics by participating in our exclusive TCL Olympics Cricket Quiz.
-  </p>
-  <p className="mb-4">
-    Its more than just a quiz — its your gateway to exciting rewards! Test your sports knowledge, show your Olympic spirit, and win big.
-  </p>
-  <p className="mb-4">
-    Lucky winners stand a chance to take home amazing prizes, including a brand-new TCL Washing Machine — designed with innovation and efficiency in mind.
-  </p>
-  <p className="mb-4">
-    Whether you're a die-hard cricket fan or a passionate supporter of Team India, this is your moment to shine with TCL.
-  </p>
-  <p className="mb-4">
-    Do not miss out! Join thousands of fans across the country in celebrating the Olympics with TCLs technology and thrill-packed contests.
-  </p>
-  <p>
-    Participate now, score big, and experience the power of sport and innovation — only with TCL.
-  </p>
-</div>
-
-    </div>
-  </div>
-</section> */}
-
-
-      
-
-      {/* About the Campaign Section */}
-      {/* <section className="py-16 bg-white rounded-t-3xl mt-[-2rem] relative z-10 shadow-lg">
-        <div className="container mx-auto px-6 text-center">
-        
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">
-            TCL: Powering the Olympic Cricket Dream
-          </h2>
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8">
-            <div className="md:w-1/2 text-lg leading-relaxed text-gray-700">
-              <p className="mb-4">
-                As a proud Olympic sponsor, TCL is committed to bringing the excitement of the games closer to you. This year, we're especially thrilled to celebrate Cricket's grand return to the Olympics!
-              </p>
-              <p>
-                Join us in supporting your favorite cricket heroes and experience the pinnacle of sporting excellence with TCL's cutting-edge technology.
-              </p>
-            </div>
-            <div className="md:w-1/2 flex justify-center">
-              <img
-                src="https://i.postimg.cc/9MQrJQXm/Screenshot-2025-06-22-at-11-21-55-AM.png"
-                alt="TCL Product with Olympic and Cricket Theme"
-                className="rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out"
-              />
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      {/* Animated Highlights Section */}
-      {/* <section className="py-16 bg-blue-700 text-white">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-10">
-            What You Get When You Join
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-    
-            <div className=" bg-blue-800 border p-8 rounded-xl shadow-lg flex flex-col items-center hover:bg-blue-900 transition duration-300">
-              <Trophy className="w-16 h-16 mb-4 text-yellow-400" />
-              <h3 className="text-2xl font-semibold mb-3">Win Big</h3>
-              <p className="text-lg text-blue-200">
-              Participate in contests and win a TCL Washing Machine 
-              </p>
-            </div>
-      
-            <div className=" bg-blue-800 p-8 border rounded-xl shadow-lg flex flex-col items-center hover:bg-blue-900 transition duration-300">
-              <Tv className="w-16 h-16 mb-4 text-green-400" />
-              <h3 className="text-2xl font-semibold mb-3">Exclusive Previews</h3>
-              <p className="text-lg text-blue-200">
-                Be the first to know about upcoming TCL products and special offers.
-              </p>
-            </div>
-        
-            <div className=" bg-blue-800 border p-8 rounded-xl shadow-lg flex flex-col items-center hover:bg-blue-900 transition duration-300">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 mb-4 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="var(--red-400)" />
-                <path d="M12 2v10m-4-4l8 8m-8 0l8-8" stroke="#fff" strokeWidth="1.5"/>
-                <circle cx="12" cy="12" r="3" fill="#fff"/>
-              </svg>
-              <h3 className="text-2xl font-semibold mb-3">Support Your Heroes</h3>
-              <p className="text-lg text-blue-200">
-                Get behind your favorite cricket teams and athletes with dedicated content.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
       {/* User Form Section */}
-      <section ref={formRef} className="py-16 bg-gray-100"
-      >
+      <section ref={formRef} className="py-16 bg-gray-100">
         <div className="container mx-auto px-6 max-w-lg">
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-8">
            Join TCL Premium Membership!
@@ -478,27 +399,9 @@ const App = () => {
             <p className="text-lg text-gray-700 mb-6">
               You're now part of the exclusive TCL Premium Member. Get ready for exciting updates and opportunities!
             </p>
-            {/* <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button
-                onClick={() => alert("Simulating wallpaper download...")} // Using alert for demo purposes
-                className="bg-blue-600 text-white font-bold py-3 px-6 rounded-full shadow-md hover:bg-blue-700 transition duration-300 flex items-center justify-center"
-              >
-                <Download className="w-5 h-5 mr-2" />
-                Download Wallpaper
-              </button>
-              <button
-                onClick={() => {
-                  alert("Redirecting to TCL's social media..."); // Using alert for demo purposes
-                  setShowThankYou(false);
-                }}
-                className="bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-full shadow-md hover:bg-gray-300 transition duration-300 flex items-center justify-center"
-              >
-                Go to Social
-              </button>
-            </div> */}
             <button
               onClick={() => setShowThankYou(false)}
-              className="mt-6 text-gray-600 hover:text-gray-900 transition duration-300"
+              className="mt-6 py-2 px-6 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition duration-300"
             >
               Close
             </button>
@@ -506,11 +409,25 @@ const App = () => {
         </div>
       )}
 
+      {/* Terms & Conditions Section - Now with Grid Layout */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
+            Terms & Conditions
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {termsAndConditionsData.map((term, index) => (
+              <TermCard key={index} title={term.title} description={term.description} />
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-6 text-center">
           <div className="mb-6">
-            <img src="https://1000logos.net/wp-content/uploads/2020/08/TCL-Logo-2000.png" alt="TCL Logo" className="inline-block h-30 rounded-2xl mx-4" />
+            <img src="https://1000logos.net/wp-content/uploads/2020/08/TCL-Logo-2000.png" alt="TCL Logo" className="inline-block h-20 rounded-2xl mx-4" /> {/* Adjusted height for better fit */}
           </div>
           <p className="text-gray-400 mb-6">&copy; {new Date().getFullYear()} TCL. All rights reserved. Official Sponsor of the Olympic Games.</p>
           <div className="flex justify-center space-x-6">
