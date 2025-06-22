@@ -509,7 +509,7 @@ const App = () => {
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-6 text-center">
           <div className="mb-6">
-            <img src="/tcllogo.jpg" alt="TCL Logo" className="inline-block h-30 rounded-2xl mx-4" />
+            <img src="https://1000logos.net/wp-content/uploads/2020/08/TCL-Logo-2000.png" alt="TCL Logo" className="inline-block h-30 rounded-2xl mx-4" />
           </div>
           <p className="text-gray-400 mb-6">&copy; {new Date().getFullYear()} TCL. All rights reserved. Official Sponsor of the Olympic Games.</p>
           <div className="flex justify-center space-x-6">
