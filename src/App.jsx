@@ -24,6 +24,10 @@ const App = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   // State to control thank you modal visibility
   const [showThankYou, setShowThankYou] = useState(false);
+  // State for displaying API submission message (success or error)
+  const [apiMessage, setApiMessage] = useState('');
+  const [isApiSuccess, setIsApiSuccess] = useState(true);
+
 
   // Reference for scrolling to the form section
   const formRef = useRef(null);
@@ -134,23 +138,58 @@ const App = () => {
   };
 
   // Handles form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => { // Made async to await the fetch call
     e.preventDefault();
     setIsSubmitting(true);
+    setApiMessage(''); // Clear previous messages
+    setIsApiSuccess(true); // Reset success state
+
     if (validateForm()) {
-      // Simulate API call
-      setTimeout(() => {
-        console.log({ fullName, email, mobile, city, selectedState });
+      try {
+        const response = await fetch('https://campaign.carzonwheel.com/api/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            fullName,
+            email,
+            mobile,
+            city,
+            selectedState,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          // Success
+          setApiMessage(data.message || 'Form data submitted successfully!');
+          setIsApiSuccess(true);
+          setShowThankYou(true); // Show thank you modal on success
+          // Clear form fields
+          setFullName('');
+          setEmail('');
+          setMobile('');
+          setCity('');
+          setSelectedState('');
+          setErrors({}); // Clear any previous errors
+        } else {
+          // Error from API
+          setApiMessage(data.message || 'Failed to submit form data.');
+          setIsApiSuccess(false);
+          setShowThankYou(true); // Still show modal for error messages
+          console.error('API Error:', data);
+        }
+      } catch (error) {
+        // Network or unexpected error
+        setApiMessage('Network error or server is unreachable. Please try again later.');
+        setIsApiSuccess(false);
+        setShowThankYou(true); // Still show modal for error messages
+        console.error('Fetch Error:', error);
+      } finally {
         setIsSubmitting(false);
-        setShowThankYou(true); // Show thank you modal on success
-        // Clear form fields
-        setFullName('');
-        setEmail('');
-        setMobile('');
-        setCity('');
-        setSelectedState('');
-        setErrors({}); // Clear any previous errors
-      }, 1500);
+      }
     } else {
       setIsSubmitting(false);
     }
@@ -271,9 +310,9 @@ const App = () => {
       {/* User Form Section */}
       <section ref={formRef} className="py-16 bg-gray-100">
         <div className="container mx-auto px-6 max-w-lg">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-8">
+          {/* <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-8">
            Join TCL Premium Membership!
-          </h2>
+          </h2> */}
           <div className="bg-white p-8 rounded-xl shadow-xl border border-gray-200">
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Full Name */}
@@ -388,16 +427,22 @@ const App = () => {
         </div>
       </section>
 
-      {/* Thank You Modal */}
+      {/* Thank You/API Message Modal */}
       {showThankYou && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <div className="bg-white p-8 rounded-xl shadow-2xl text-center max-w-md w-full animate-scale-in">
-            <CheckCircle className="w-20 h-20 text-green-500 mx-auto mb-6" />
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              🎉 Thank You for Joining the TCL Celebration!
+            {isApiSuccess ? (
+              <CheckCircle className="w-20 h-20 text-green-500 mx-auto mb-6" />
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-20 h-20 text-red-500 mx-auto mb-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.174 3.35 1.94 3.35h14.72c1.766 0 2.806-1.85 1.94-3.35L13.106 3.03c-.866-1.5-3.092-1.5-3.958 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+              </svg>
+            )}
+            <h2 className={`text-3xl font-bold ${isApiSuccess ? 'text-gray-900' : 'text-red-700'} mb-4`}>
+              {isApiSuccess ? '🎉 Thank You for Joining the TCL Celebration!' : 'Submission Failed!'}
             </h2>
             <p className="text-lg text-gray-700 mb-6">
-              You're now part of the exclusive TCL Premium Member. Get ready for exciting updates and opportunities!
+              {apiMessage}
             </p>
             <button
               onClick={() => setShowThankYou(false)}
@@ -410,7 +455,7 @@ const App = () => {
       )}
 
       {/* Terms & Conditions Section - Now with Grid Layout */}
-      <section className="py-16 bg-gray-100">
+      <section className=" bg-gray-100">
         <div className="container mx-auto px-6 max-w-6xl">
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-12">
             Terms & Conditions
