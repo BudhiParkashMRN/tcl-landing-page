@@ -207,11 +207,11 @@ const App = () => {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center text-center bg-cover bg-center rounded-b-3xl shadow-xl overflow-hidden"
         style={{
-          backgroundImage: "url('https://aws-obg-image-lb-5.tcl.com/content/dam/brandsite/news/ioc/5.png?t=1740121362485&w=1200&webp=undefined&dpr=2.625&rendition=1068')", // Placeholder background image
+          backgroundImage: "url('https://t4.ftcdn.net/jpg/05/38/40/35/360_F_538403521_YuqQKnrBgAiabJXH7zsA8suaSHs93Dm0.jpg')", // Placeholder background image
           backgroundBlendMode: 'overlay',
           backgroundColor: 'rgba(0, 0, 0, 0.4)'
         }}>
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/70 to-purple-600/70 z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 z-0"></div>
         <div className="relative z-10 p-6 sm:p-8 md:p-12 lg:p-16 text-white max-w-4xl mx-auto">
           <h1 className="text-2xl sm:text-xl md:text-5xl font-extrabold leading-tight drop-shadow-lg mb-4 animate-fade-in-up">
            Become TCL Premium Member for the Olympics Extravaganza!
@@ -298,7 +298,7 @@ const App = () => {
             </div>
             <div className="md:w-1/2 flex justify-center">
               <img
-                src="https://imageio.forbes.com/specials-images/imageserve/67b7a5bcc43b5b373e0d8fbd/0x0.jpg?format=jpg&height=900&width=1600&fit=bounds"
+                src="https://i.postimg.cc/9MQrJQXm/Screenshot-2025-06-22-at-11-21-55-AM.png"
                 alt="TCL Product with Olympic and Cricket Theme"
                 className="rounded-xl shadow-lg transform hover:scale-105 transition duration-300 ease-in-out"
               />
