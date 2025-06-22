@@ -205,7 +205,7 @@ const App = () => {
       </style>
 
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center text-center bg-cover bg-center rounded-b-3xl shadow-xl overflow-hidden"
+      {/* <section className="relative h-screen flex items-center justify-center text-center bg-cover bg-center rounded-b-3xl shadow-xl overflow-hidden"
         style={{
           backgroundImage: "url('https://t4.ftcdn.net/jpg/05/38/40/35/360_F_538403521_YuqQKnrBgAiabJXH7zsA8suaSHs93Dm0.jpg')", // Placeholder background image
           backgroundBlendMode: 'overlay',
@@ -225,16 +225,16 @@ const App = () => {
           >
             Join Now
           </button>
-          {/* Floating cricket ball animation */}
+         
           <div className="absolute bottom-10 right-10 hidden md:block">
             <span className="text-6xl cricket-ball-animation" role="img" aria-label="Cricket Ball">
               🏏
             </span>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      <section className="py-16 bg-white rounded-t-3xl mt-[-2rem] relative z-10 shadow-lg">
+      {/* <section className="py-16 bg-white rounded-t-3xl mt-[-2rem] relative z-10 shadow-lg">
   <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
     <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">
       Play the TCL Olympics Quiz & Win a Washing Machine!
@@ -275,13 +275,13 @@ const App = () => {
 
     </div>
   </div>
-</section>
+</section> */}
 
 
       
 
       {/* About the Campaign Section */}
-      <section className="py-16 bg-white rounded-t-3xl mt-[-2rem] relative z-10 shadow-lg">
+      {/* <section className="py-16 bg-white rounded-t-3xl mt-[-2rem] relative z-10 shadow-lg">
         <div className="container mx-auto px-6 text-center">
         
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-8">
@@ -305,16 +305,16 @@ const App = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Animated Highlights Section */}
-      <section className="py-16 bg-blue-700 text-white">
+      {/* <section className="py-16 bg-blue-700 text-white">
         <div className="container mx-auto px-6 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-10">
             What You Get When You Join
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Highlight 1 */}
+    
             <div className=" bg-blue-800 border p-8 rounded-xl shadow-lg flex flex-col items-center hover:bg-blue-900 transition duration-300">
               <Trophy className="w-16 h-16 mb-4 text-yellow-400" />
               <h3 className="text-2xl font-semibold mb-3">Win Big</h3>
@@ -322,7 +322,7 @@ const App = () => {
               Participate in contests and win a TCL Washing Machine 
               </p>
             </div>
-            {/* Highlight 2 */}
+      
             <div className=" bg-blue-800 p-8 border rounded-xl shadow-lg flex flex-col items-center hover:bg-blue-900 transition duration-300">
               <Tv className="w-16 h-16 mb-4 text-green-400" />
               <h3 className="text-2xl font-semibold mb-3">Exclusive Previews</h3>
@@ -330,7 +330,7 @@ const App = () => {
                 Be the first to know about upcoming TCL products and special offers.
               </p>
             </div>
-            {/* Highlight 3 - Using custom SVG for Cricket icon */}
+        
             <div className=" bg-blue-800 border p-8 rounded-xl shadow-lg flex flex-col items-center hover:bg-blue-900 transition duration-300">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-16 h-16 mb-4 text-red-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="var(--red-400)" />
@@ -344,10 +344,11 @@ const App = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* User Form Section */}
-      <section ref={formRef} className="py-16 bg-gray-100">
+      <section ref={formRef} className="py-16 bg-gray-100"
+      >
         <div className="container mx-auto px-6 max-w-lg">
           <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-8">
            Join TCL Premium Membership!
