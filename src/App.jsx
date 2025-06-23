@@ -157,6 +157,7 @@ const App = () => {
             mobile,
             city,
             selectedState,
+            from :"game"
           }),
         });
 
